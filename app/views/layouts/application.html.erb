@@ -12,6 +12,11 @@
   <body>
     <%= render partial: "layouts/navbar" %>
     <main class="container flex m-5">
+      <% if notice %>
+        <p class="bg-green-50 text-green-500 font-medium rounded-lg inline-block"><%= notice %></p>
+      <% elsif alert %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
       <%= yield %>
     </main>
   </body>
