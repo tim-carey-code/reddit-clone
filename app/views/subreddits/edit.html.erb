@@ -1,9 +1,6 @@
 <div class="mx-auto md:w-2/3 w-full">
   <h1 class="font-bold text-4xl">Editing subreddit</h1>
-  <%= turbo_frame_tag @subreddit do %>
-    <%= render "form", subreddit: @subreddit %>
-    <%= link_to "Cancel", subreddit_path(@subreddit), class: "ml-2 rounded-lg py-3 px-5 bg-red-600 text-white inline-block font-medium" %>
-  <% end %>
+  <%= render "form", subreddit: @subreddit %>
   <%= link_to "Show this subreddit", @subreddit, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   <%= link_to "Back to subreddits", subreddits_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 </div>

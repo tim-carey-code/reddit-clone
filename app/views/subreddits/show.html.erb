@@ -1,13 +1,10 @@
 <div class="mx-auto md:w-2/3 w-full flex">
   <div class="mx-auto">
-    <%= turbo_stream_from dom_id(@subreddit) %>
-    <%= turbo_frame_tag @subreddit do %>
-      <%= render @subreddit %>
-      <%= link_to "Edit this subreddit", edit_subreddit_path(@subreddit), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      <div class="inline-block ml-2">
-        <%= button_to "Destroy this subreddit", subreddit_path(@subreddit), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-      </div>
-    <% end %>
+    <%= render @subreddit %>
+    <%= link_to "Edit this subreddit", edit_subreddit_path(@subreddit), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <div class="inline-block ml-2">
+      <%= button_to "Destroy this subreddit", subreddit_path(@subreddit), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    </div>
     <%= link_to "Back to subreddits", subreddits_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>
