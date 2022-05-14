@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root "home#index"
+  root "subreddits#index"
 
   resources :subreddits, only: %i[show edit destroy update], path: "/r"
 

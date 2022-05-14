@@ -1,9 +1,9 @@
 <div class="mx-auto md:w-2/3 w-full flex">
   <div class="mx-auto">
     <%= render @subreddit %>
-    <%= link_to "Edit this subreddit", edit_subreddit_path(@subreddit), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this subreddit", edit_subreddit_path(@subreddit), class: "mt-2 rounded-lg py-3 px-5 bg-blue-600 inline-block font-medium text-white" %>
     <div class="inline-block ml-2">
-      <%= button_to "Destroy this subreddit", subreddit_path(@subreddit), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      <%= button_to "Destroy this subreddit", subreddit_path(@subreddit), form: {data: {turbo_confirm: "Are you sure you want to delete subreddit?"}}, class: "mt-2 rounded-lg py-3 px-5 bg-red-600 text-white font-medium", method: :delete %>
     </div>
     <%= link_to "Back to subreddits", subreddits_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
