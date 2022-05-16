@@ -3,6 +3,8 @@ class CreateSubscribers < ActiveRecord::Migration[7.0]
     create_table :subscribers do |t|
 
       t.timestamps
+      t.references :user, index: true
+      t.references :subreddit, index: true
     end
   end
 end

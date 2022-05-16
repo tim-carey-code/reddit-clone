@@ -12,7 +12,7 @@ class SubredditsController < ApplicationController
 
   # GET /subreddits/new
   def new
-    @subreddit = current_user.subreddits.build
+    @subreddit = Subreddit.new
   end
 
   # GET /subreddits/1/edit
@@ -21,7 +21,8 @@ class SubredditsController < ApplicationController
 
   # POST /subreddits or /subreddits.json
   def create
-    @subreddit = current_user.subreddits.new(subreddit_params)
+    @subreddit = Subreddit.new(subreddit_params)
+    @subreddit.user = current_user 
 
     respond_to do |format|
       if @subreddit.save
@@ -66,6 +67,6 @@ class SubredditsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def subreddit_params
-    params.require(:subreddit).permit(:name, :sub_description, user_id: current_user.id)
+    params.require(:subreddit).permit(:name, :sub_description, :user_id)
   end
 end
