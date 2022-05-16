@@ -16,7 +16,7 @@ export default class extends Controller {
       body: JSON.stringify(parseInt(data))
     })
       .then((response) => {
-        console.log("Response: ", response)
+        console.log("Response: ", response.json())
         response.json()
       })
       .then(data => {
