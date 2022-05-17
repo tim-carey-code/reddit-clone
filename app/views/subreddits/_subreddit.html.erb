@@ -10,13 +10,7 @@
   <% if action_name != "show" %>
     <%= link_to "Show this subreddit", subreddit, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to "Edit this subreddit", edit_subreddit_path(subreddit), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <div data-controller="join">
-      <%= form_with(model: @subscriber) do |form| %>
-        <input data-join-target="subreddit" type="hidden" value="<%= subreddit.id %>">
-        <input data-join-target="subscriber" type="hidden" value="<%= current_user.id%>">
-        <button data-action="join#subscribe">Subscribe</button>
-      <% end %>
-    </div>
+    <%= render partial: "subscribers/form", locals: {subreddit: subreddit} %>
     <hr class="mt-6">
   <% end %>
 </div>

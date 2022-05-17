@@ -1,19 +1,19 @@
 class SubscribersController < ApplicationController
-  skip_before_action :verify_authenticity_token
 
-  def index 
+  def index
   end
 
   def new
-    @subscriber = Subscriber.new 
+    @subscriber = Subscriber.new
   end 
 
   def create
-    @subscriber = Subscriber.new(subscriber_params)
+    @subscriber = current_user.subscribers.new(subscriber_params)
+    @subreddit = Subreddit.find_by(params[:id])
 
     respond_to do |format| 
       if @subscriber.save 
-        format.html { redirect_to subreddit_url(@subreddit), notice: "Successfully joined #{@subreddit.name}" }
+        format.html { redirect_to subreddit_path(params[:subreddit_id]), notice: "Successfully joined #{@subreddit.name}" }
         format.json { render :show, status: :created, location: @subreddit }
       else 
         format.html { render :new, status: :unprocessable_entity }
