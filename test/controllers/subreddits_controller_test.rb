@@ -1,9 +1,7 @@
 require "test_helper"
 
 class SubredditsControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @subreddit = subreddits(:one)
-  end
+  setup { @subreddit = subreddits(:one) }
 
   test "should get index" do
     get subreddits_url
@@ -17,7 +15,13 @@ class SubredditsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create subreddit" do
     assert_difference("Subreddit.count") do
-      post subreddits_url, params: {subreddit: {name: @subreddit.name, sub_description: @subreddit.sub_description}}
+      post subreddits_url,
+        params: {
+          subreddit: {
+            name: @subreddit.name,
+            sub_description: @subreddit.sub_description
+          }
+        }
     end
 
     assert_redirected_to subreddit_url(Subreddit.last)
@@ -34,7 +38,13 @@ class SubredditsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update subreddit" do
-    patch subreddit_url(@subreddit), params: {subreddit: {name: @subreddit.name, sub_description: @subreddit.sub_description}}
+    patch subreddit_url(@subreddit),
+      params: {
+        subreddit: {
+          name: @subreddit.name,
+          sub_description: @subreddit.sub_description
+        }
+      }
     assert_redirected_to subreddit_url(@subreddit)
   end
 

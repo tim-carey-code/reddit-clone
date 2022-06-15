@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   delete "/r/:id", to: "subreddits#destroy"
   patch "/r/:id", to: "subreddits#update"
 
-  resources :subreddits, only: %i[index create new edit] do 
-    resources :subscribers 
+  resources :subreddits, only: %i[index create new edit] do
+    resources :subscribers
   end
 
   get "/r", to: redirect("/subreddits")

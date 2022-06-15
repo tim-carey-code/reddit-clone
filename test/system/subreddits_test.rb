@@ -1,9 +1,7 @@
 require "application_system_test_case"
 
 class SubredditsTest < ApplicationSystemTestCase
-  setup do
-    @subreddit = subreddits(:one)
-  end
+  setup { @subreddit = subreddits(:one) }
 
   test "visiting the index" do
     visit subreddits_url

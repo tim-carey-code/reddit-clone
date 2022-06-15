@@ -3,7 +3,7 @@ class SubredditsController < ApplicationController
 
   # GET /subreddits or /subreddits.json
   def index
-    @subreddits = Subreddit.all
+    @subreddits = Subreddit.all.order(created_at: :desc)
   end
 
   # GET /subreddits/1 or /subreddits/1.json
@@ -22,15 +22,20 @@ class SubredditsController < ApplicationController
   # POST /subreddits or /subreddits.json
   def create
     @subreddit = Subreddit.new(subreddit_params)
-    @subreddit.user = current_user 
+    @subreddit.user = current_user
 
     respond_to do |format|
       if @subreddit.save
-        format.html { redirect_to subreddit_url(@subreddit), notice: "Subreddit was successfully created." }
+        format.html do
+          redirect_to subreddit_url(@subreddit),
+            notice: "#{@subreddit.name} was successfully created."
+        end
         format.json { render :show, status: :created, location: @subreddit }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @subreddit.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @subreddit.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -39,11 +44,16 @@ class SubredditsController < ApplicationController
   def update
     respond_to do |format|
       if @subreddit.update(subreddit_params)
-        format.html { redirect_to subreddit_url(@subreddit), notice: "Subreddit was successfully updated." }
+        format.html do
+          redirect_to subreddit_url(@subreddit),
+            notice: "#{@subreddit.name} was successfully updated."
+        end
         format.json { render :show, status: :ok, location: @subreddit }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @subreddit.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @subreddit.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -53,7 +63,10 @@ class SubredditsController < ApplicationController
     @subreddit.destroy
 
     respond_to do |format|
-      format.html { redirect_to subreddits_url, notice: "Subreddit was successfully destroyed." }
+      format.html do
+        redirect_to subreddits_url,
+          notice: "#{@subreddit.name} was successfully destroyed."
+      end
       format.json { head :no_content }
     end
   end

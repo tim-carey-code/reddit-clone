@@ -15,9 +15,10 @@ gem "redis", "~> 4.0"
 gem "image_processing", "~> 1.2"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "bootsnap", require: false
-gem "dotenv-rails", groups: [:development, :test]
+gem "dotenv-rails", groups: %i[development test]
 gem "devise", "~> 4.8", ">= 4.8.1"
 gem "friendly_id", "~> 5.4.0"
+gem "prettier"
 
 group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
@@ -27,8 +28,7 @@ end
 group :development do
   gem "web-console"
   gem "erb_lint", require: false, github: "Shopify/erb-lint"
-  gem 'annotate'
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
+  gem "annotate"
   # gem "rack-mini-profiler"
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
