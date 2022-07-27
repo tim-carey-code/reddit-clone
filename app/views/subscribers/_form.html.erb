@@ -1,8 +1,0 @@
-<div>
-  <form action="<%= subreddit_subscribers_path(subreddit) %>" method="post">
-    <input type="hidden" name="authenticity_token">
-    <input id="subreddit_id" value="<%= subreddit.id %>" type="hidden" name="subscriber[subreddit_id]">
-    <input id="user_id" type="hidden" value="<%= current_user.id %>" name="subscriber[user_id]">
-    <button>Subscribe</button>
-  </form>
-</div>

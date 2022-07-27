@@ -8,6 +8,7 @@ class SubredditsController < ApplicationController
 
   # GET /subreddits/1 or /subreddits/1.json
   def show
+    @subscription = @subreddit.subscriptions.new
   end
 
   # GET /subreddits/new
@@ -22,7 +23,7 @@ class SubredditsController < ApplicationController
   # POST /subreddits or /subreddits.json
   def create
     @subreddit = Subreddit.new(subreddit_params)
-    @subreddit.user = current_user
+    @subreddit.user_id = current_user.id
 
     respond_to do |format|
       if @subreddit.save

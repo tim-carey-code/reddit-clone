@@ -1,0 +1,9 @@
+<% if subscribed? %>
+  <p>Unsubscribe</p>
+<% else %>
+  <%= form_with(model: @subscription, url: [@subreddit, @subscription]) do |form| %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :subreddit_id, value: @subreddit.id%>
+    <%= form.submit "Subscribe" %>
+  <% end %>
+<% end %>

@@ -22,6 +22,6 @@ class User < ApplicationRecord
     :rememberable,
     :validatable
 
-  has_many :subscribers
-  has_many :subreddits, through: :subscribers
+  has_many :subscriptions
+  has_many :subreddits, through: :subscriptions
 end

@@ -269,6 +269,8 @@ GEM
     stimulus-rails (1.0.4)
       railties (>= 6.0.0)
     strscan (3.0.1)
+    subscribable (0.0.3)
+      activerecord
     syntax_tree (2.7.0)
       prettier_print
     syntax_tree-haml (1.2.0)
@@ -336,6 +338,7 @@ DEPENDENCIES
   sprockets-rails
   standard (~> 1.11)
   stimulus-rails
+  subscribable
   tailwindcss-rails (~> 2.0)
   turbo-rails
   tzinfo-data

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_15_151813) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_18_165124) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,14 +20,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_151813) do
     t.string "sluggable_type", limit: 50
     t.string "scope"
     t.datetime "created_at"
-    t.index %w[slug sluggable_type scope],
-            name:
-              "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope",
-            unique: true
-    t.index %w[slug sluggable_type],
-            name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
-    t.index %w[sluggable_type sluggable_id],
-            name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
   create_table "subreddits", force: :cascade do |t|
@@ -40,13 +35,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_151813) do
     t.index ["slug"], name: "index_subreddits_on_slug", unique: true
   end
 
-  create_table "subscribers", force: :cascade do |t|
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "subreddit_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.bigint "subreddit_id"
-    t.index ["subreddit_id"], name: "index_subscribers_on_subreddit_id"
-    t.index ["user_id"], name: "index_subscribers_on_user_id"
+    t.index ["subreddit_id"], name: "index_subscriptions_on_subreddit_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,8 +54,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_151813) do
     t.datetime "updated_at", null: false
     t.string "username", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"],
-            name: "index_users_on_reset_password_token",
-            unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "subscriptions", "subreddits"
+  add_foreign_key "subscriptions", "users"
 end

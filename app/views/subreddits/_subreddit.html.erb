@@ -9,8 +9,7 @@
   </p>
   <% if action_name != "show" %>
     <%= link_to "Show this subreddit", subreddit, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this subreddit", edit_subreddit_path(subreddit), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= render partial: "subscribers/form", locals: {subreddit: subreddit} %>
+    <%= link_to "Edit this subreddit", edit_subreddit_path(subreddit), class: "btn-secondary" %>
     <hr class="mt-6">
   <% end %>
 </div>
