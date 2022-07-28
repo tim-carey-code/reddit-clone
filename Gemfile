@@ -19,6 +19,8 @@ gem "dotenv-rails", groups: %i[development test]
 gem "devise", "~> 4.8", ">= 4.8.1"
 gem "friendly_id", "~> 5.4.0"
 gem "prettier"
+gem "tailwindcss-rails", "~> 2.0"
+
 
 group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
@@ -26,13 +28,10 @@ group :development, :test do
 end
 
 group :development do
+  gem 'os', '~> 1.1', '>= 1.1.4'
   gem "web-console"
   gem "erb_lint", require: false, github: "Shopify/erb-lint"
   gem "annotate"
-  # gem "rack-mini-profiler"
-
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
 end
 
 group :test do
@@ -50,4 +49,3 @@ end
 # Use Sass to process CSS
 # gem "sassc-rails"
 
-gem "tailwindcss-rails", "~> 2.0"
