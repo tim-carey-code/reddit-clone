@@ -17,6 +17,7 @@ class Subreddit < ApplicationRecord
   has_many :subscriptions
   has_many :users, through: :subscriptions
 
+  accepts_nested_attributes_for :subscriptions, allow_destroy: true
   extend FriendlyId
   friendly_id :name, use: :slugged
 end

@@ -1,5 +1,5 @@
 class SubscriptionsController < ApplicationController
-  before_action :set_subreddit, only: [:create]
+  before_action :set_subreddit, only: [:create, :destroy]
 
   def create
     @subscription = current_user.subscriptions.new(subscription_params)
@@ -13,6 +13,14 @@ class SubscriptionsController < ApplicationController
     end
   end
 
+  def destroy
+    @subscription = Subscription.find_by(subreddit_id: @subreddit.id, user_id: current_user.id)
+    if @subscription.destroy
+      redirect_to subreddit_path(@subreddit)
+      flash[:notice] = "Successfully unsubscribed"
+    end
+  end
+
   private
 
   def subscription_params
@@ -20,6 +28,6 @@ class SubscriptionsController < ApplicationController
   end
 
   def set_subreddit
-    @subreddit = Subreddit.friendly.find_by(params[:id])
+    @subreddit = Subreddit.friendly.find(params[:subreddit_id])
   end
 end

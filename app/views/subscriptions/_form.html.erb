@@ -1,5 +1,6 @@
-<% if subscribed? %>
-  <p>Unsubscribe</p>
+<% if subscribed %>
+  <% @subscription = subscribed %>
+  <%= button_to "Unsubscribe", "/subreddits/#{@subreddit.id}/subscriptions/#{@subscription.id}", data: { turbo_method: :delete }, method: :delete %>
 <% else %>
   <%= form_with(model: @subscription, url: [@subreddit, @subscription]) do |form| %>
     <%= form.hidden_field :user_id, value: current_user.id %>

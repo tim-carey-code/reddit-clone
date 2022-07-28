@@ -1,26 +1,21 @@
 class SubredditsController < ApplicationController
   before_action :set_subreddit, only: %i[show edit update destroy]
 
-  # GET /subreddits or /subreddits.json
   def index
     @subreddits = Subreddit.all.order(created_at: :desc)
   end
 
-  # GET /subreddits/1 or /subreddits/1.json
   def show
     @subscription = @subreddit.subscriptions.new
   end
 
-  # GET /subreddits/new
   def new
     @subreddit = Subreddit.new
   end
 
-  # GET /subreddits/1/edit
   def edit
   end
 
-  # POST /subreddits or /subreddits.json
   def create
     @subreddit = Subreddit.new(subreddit_params)
     @subreddit.user_id = current_user.id
@@ -41,7 +36,6 @@ class SubredditsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /subreddits/1 or /subreddits/1.json
   def update
     respond_to do |format|
       if @subreddit.update(subreddit_params)
@@ -59,7 +53,6 @@ class SubredditsController < ApplicationController
     end
   end
 
-  # DELETE /subreddits/1 or /subreddits/1.json
   def destroy
     @subreddit.destroy
 
@@ -74,12 +67,10 @@ class SubredditsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_subreddit
     @subreddit = Subreddit.friendly.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def subreddit_params
     params.require(:subreddit).permit(:name, :sub_description, :user_id)
   end
