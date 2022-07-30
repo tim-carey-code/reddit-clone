@@ -1,7 +1,12 @@
 require "test_helper"
 
 class SubredditsControllerTest < ActionDispatch::IntegrationTest
-  setup { @subreddit = subreddits(:one) }
+  include Devise::Test::IntegrationHelpers
+
+  def setup
+    sign_in users(:tim)
+    @subreddit = subreddits(:one)
+  end
 
   test "should get index" do
     get subreddits_url
@@ -14,12 +19,13 @@ class SubredditsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create subreddit" do
-    assert_difference("Subreddit.count") do
+    assert_difference "Subreddit.count", 1 do
       post subreddits_url,
         params: {
           subreddit: {
-            name: @subreddit.name,
-            sub_description: @subreddit.sub_description
+            name: "coolsubreddit",
+            sub_description: "a place to chill and talk",
+            slug: "coolsubreddit"
           }
         }
     end

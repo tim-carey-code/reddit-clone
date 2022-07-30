@@ -12,9 +12,7 @@
 #
 
 one:
-  name: MyString
-  sub_description: MyText
-
-two:
-  name: MyString
-  sub_description: MyText
+  name: "subreddita"
+  sub_description: "check out this cool subreddit"
+  slug: "subreddita"
+  user_id: 40

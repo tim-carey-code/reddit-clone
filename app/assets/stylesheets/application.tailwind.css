@@ -4,10 +4,14 @@
 
 @layer components {
   .btn-primary {
-    @apply rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium;
+    @apply rounded-lg py-3 ml-2 px-5 bg-blue-600 text-white block font-medium hover:bg-blue-800;
   }
 
   .btn-secondary {
-    @apply rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium;
+    @apply rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium hover:bg-gray-300;
+  }
+
+  .btn-danger {
+    @apply rounded-lg py-3 ml-2 px-5 bg-red-600 inline-block font-medium text-white hover:bg-red-800;
   }
 }

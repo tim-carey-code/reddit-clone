@@ -17,8 +17,7 @@ class SubredditsController < ApplicationController
   end
 
   def create
-    @subreddit = Subreddit.new(subreddit_params)
-    @subreddit.user_id = current_user.id
+    @subreddit = current_user.subreddits.build(subreddit_params)
 
     respond_to do |format|
       if @subreddit.save

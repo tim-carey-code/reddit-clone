@@ -14,7 +14,7 @@ class Subreddit < ApplicationRecord
   validates :name, format: {with: /\A[a-zA-Z]+\Z/}, uniqueness: {case_sensitive: true}, presence: true
   validates :sub_description, presence: true
 
-  has_many :subscriptions
+  has_many :subscriptions, dependent: :destroy
   has_many :users, through: :subscriptions
 
   accepts_nested_attributes_for :subscriptions, allow_destroy: true
