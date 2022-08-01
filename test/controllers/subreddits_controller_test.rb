@@ -4,7 +4,8 @@ class SubredditsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   def setup
-    sign_in users(:tim)
+    @user = users(:tim)
+    sign_in @user
     @subreddit = subreddits(:one)
   end
 
