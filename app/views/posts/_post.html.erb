@@ -1,0 +1,12 @@
+<div class="flex flex-col">
+  <ul id="post-<%= post.id %>">
+    <li class="m-4">
+      <p><%= post.title %></p>
+    </li>
+    <li class="m-4">
+      <p><%= post.content %></p>
+      <p>Post by: <%= post.user.username %></p>
+      <p><%= time_ago_in_words(post.created_at) %> ago</p>
+    </li>
+  </ul>
+</div>

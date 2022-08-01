@@ -1,0 +1,15 @@
+<% if user_signed_in? %>
+  <%= form_with(model: [@subreddit, Post.new]) do |form| %>
+    <div>
+      <%= form.label "Title" %>
+      <%= form.text_field :title %>
+    </div>
+    <div>
+      <%= form.label "Content" %>
+      <%= form.text_field :content %>
+    </div>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :subreddit_id, value: @subreddit.id %>
+    <%= form.submit "New Post", class: "btn-primary m-4" %>
+  <% end %>
+<% end %>

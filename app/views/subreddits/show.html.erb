@@ -12,3 +12,10 @@
     <%= @subreddit.subscriptions.count %>
   </div>
 </div>
+<div class="flex">
+  <%= render partial: "posts/post_form", locals: { subreddit: @subreddit } %>
+  <%= @subreddit.posts.count %>
+  <div class="flex flex-col">
+    <%= render @subreddit.posts %>
+  </div>
+</div>

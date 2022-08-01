@@ -10,5 +10,9 @@ Rails.application.routes.draw do
     resources :subscriptions
   end
 
+  resources :subreddits do
+    resources :posts
+  end
+
   get "/r", to: redirect("/subreddits")
 end
