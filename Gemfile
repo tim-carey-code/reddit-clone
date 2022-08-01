@@ -11,6 +11,7 @@ gem "puma", "~> 5.0"
 gem "turbo-rails"
 gem "stimulus-rails"
 gem "jbuilder"
+gem "cancancan"
 gem "redis", "~> 4.0"
 gem "image_processing", "~> 1.2"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]

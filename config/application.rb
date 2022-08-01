@@ -13,6 +13,8 @@ module RedditClone
 
     config.active_record.verify_foreign_keys_for_fixtures = false
 
+    config.action_dispatch.rescue_responses.merge!("CanCan::AccessDenied" => :unauthorized)
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
