@@ -1,10 +1,12 @@
-<% if subscribed %>
-  <% @subscription = subscribed %>
-  <%= button_to "Unsubscribe", "/subreddits/#{@subreddit.id}/subscriptions/#{@subscription.id}", data: { turbo_method: :delete }, method: :delete, class: "btn-danger unsubscribe" %>
-<% else %>
-  <%= form_with(model: @subscription, url: [@subreddit, @subscription]) do |form| %>
-    <%= form.hidden_field :user_id, value: current_user.id %>
-    <%= form.hidden_field :subreddit_id, value: @subreddit.id%>
-    <%= form.submit "Subscribe", class: "btn-primary cursor-pointer subscribe" %>
+<% if user_signed_in? %>
+  <% if subscribed %>
+    <% @subscription = subscribed %>
+    <%= button_to "Unsubscribe", "/subreddits/#{@subreddit.id}/subscriptions/#{@subscription.id}", data: { turbo_method: :delete }, method: :delete, class: "btn-danger unsubscribe" %>
+  <% else %>
+    <%= form_with(model: @subscription, url: [@subreddit, @subscription]) do |form| %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+      <%= form.hidden_field :subreddit_id, value: @subreddit.id%>
+      <%= form.submit "Subscribe", class: "btn-primary cursor-pointer subscribe" %>
+    <% end %>
   <% end %>
 <% end %>

@@ -1,16 +1,15 @@
 <div class="flex justify-center flex-col items-center" id="<%= dom_id subreddit %>">
-  <p class="my-5">
+  <p class="my-5 text-center">
     <strong class="block font-medium mb-1">Name:</strong>
     <%= subreddit.name %>
   </p>
-  <p class="my-5">
+  <p class="my-5 text-center">
     <strong class="block font-medium mb-1">Sub description:</strong>
     <%= subreddit.sub_description %>
   </p>
   <% if action_name != "show" %>
     <div class="m-6">
       <%= link_to "Show this subreddit", subreddit, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      <%= link_to "Edit this subreddit", edit_subreddit_path(subreddit), class: "btn-secondary" %>
     </div>
   <% end %>
 </div>

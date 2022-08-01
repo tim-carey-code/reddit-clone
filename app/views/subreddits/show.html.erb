@@ -3,8 +3,10 @@
     <%= render @subreddit %>
     <div class="flex justify-center items-center">
       <%= render partial: "subscriptions/form", locals: { subreddit: @subreddit } %>
-      <%= link_to "Edit Subreddit", edit_subreddit_path(@subreddit), class: "btn-primary w-fit" %>
-      <%= button_to "Destroy Subreddit", subreddit_path(@subreddit), method: :delete, class: "btn-danger" %>
+      <% if subreddit_owner? %>
+        <%= link_to "Edit Subreddit", edit_subreddit_path(@subreddit), class: "btn-primary w-fit" %>
+        <%= button_to "Destroy Subreddit", subreddit_path(@subreddit), method: :delete, class: "btn-danger" %>
+      <% end %>
       <%= link_to "Back to Subreddits", subreddits_path, class: "btn-secondary w-fit" %>
     </div>
     <%= @subreddit.subscriptions.count %>
