@@ -6,9 +6,9 @@ class SubscriptionsController < ApplicationController
 
     respond_to do |format|
       if @subscription.save
-        format.html { redirect_to subreddit_subscriptions_url(@subreddit), notice: "Sucessfully subscribed" }
+        format.html { redirect_to subreddit_path(@subreddit), notice: "Sucessfully subscribed" }
       else
-        format.html { render action: "subreddits#show", status: :unprocessable_entity }
+        format.html { redirect_to subreddit_path(@subreddit), status: :unprocessable_entity }
       end
     end
   end
