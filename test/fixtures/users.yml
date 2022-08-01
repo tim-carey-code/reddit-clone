@@ -1,4 +1,5 @@
 tim:
+  id: 1
   username: timmy2pins
   email: tim@example.com
   encrypted_password: password
