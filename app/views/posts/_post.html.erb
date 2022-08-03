@@ -9,4 +9,7 @@
       <p><%= time_ago_in_words(post.created_at) %> ago</p>
     </li>
   </ul>
+  <div>
+    <%= button_to "Destroy Post", [post.subreddit, post], method: :delete, class: "btn-danger" %>
+  </div>
 </div>

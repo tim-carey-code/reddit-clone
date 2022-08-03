@@ -1,15 +1,15 @@
 <% if user_signed_in? %>
   <%= form_with(model: [@subreddit, Post.new]) do |form| %>
-    <div>
+    <div class="flex flex-col">
       <%= form.label "Title" %>
-      <%= form.text_field :title %>
-    </div>
-    <div>
+      <%= form.text_area :title %>
       <%= form.label "Content" %>
-      <%= form.text_field :content %>
+      <%= form.text_area :content, class: "w-96 h-36" %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+      <%= form.hidden_field :subreddit_id, value: @subreddit.id %>
     </div>
-    <%= form.hidden_field :user_id, value: current_user.id %>
-    <%= form.hidden_field :subreddit_id, value: @subreddit.id %>
-    <%= form.submit "New Post", class: "btn-primary m-4" %>
+    <div class="flex flex-col justify-center items-center">
+      <%= form.submit "New Post", class: "btn-primary m-4" %>
+    </div>
   <% end %>
 <% end %>

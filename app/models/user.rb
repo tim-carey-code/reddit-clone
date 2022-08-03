@@ -25,4 +25,5 @@ class User < ApplicationRecord
   has_many :subscriptions, dependent: :destroy
   has_many :subreddits, through: :subscriptions
   has_many :posts
+  has_many :comments
 end

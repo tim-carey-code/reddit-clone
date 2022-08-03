@@ -17,6 +17,16 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @subreddit = Subreddit.friendly.find(params[:subreddit_id])
+    @post = Post.find_by(subreddit_id: @subreddit.id, user_id: current_user.id)
+    @post.destroy
+
+    respond_to do |format|
+      format.html { redirect_to subreddit_path(@subreddit), notice: "Post successfully destroyed" }
+    end
+  end
+
   private
 
   def post_params
